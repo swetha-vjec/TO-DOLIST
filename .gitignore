@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual env
+.venv/
+venv/
+env/
+ENV/
+
+# SQLite DB
+db.sqlite3
+
+# Django static files (if you collect them)
+/staticfiles/
+
+# IDE/editor
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# dotenv
+.env
+
+# pytest cache
+.pytest_cache/
+
+# Coverage
+.coverage

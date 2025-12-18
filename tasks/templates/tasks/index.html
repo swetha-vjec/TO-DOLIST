@@ -1,0 +1,46 @@
+{% extends 'tasks/base.html' %}
+{% block title %}To-Do List{% endblock %}
+
+{% block content %}
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h1 class="h3 mb-0">To-Do List</h1>
+      <p class="text-muted small mb-0">Manage your tasks — quick and simple.</p>
+    </div>
+    <div class="d-none d-md-block">
+      <a class="btn btn-primary btn-sm" href="{% url 'tasks:task_create' %}"><i class="bi bi-plus-lg me-1"></i>Add New To-Do</a>
+    </div>
+  </div>
+
+  {% if tasks %}
+    <div class="row g-3">
+      {% for task in tasks %}
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm task-card">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title mb-2">{{ task.subject }}</h5>
+              <p class="card-text text-muted mb-3">{{ task.notes|default_if_none:""|truncatechars:120 }}</p>
+              <div class="mt-auto d-flex justify-content-between align-items-center">
+                <small class="text-muted">{{ task.created_at|date:"M d, Y H:i" }}</small>
+                <div>
+                  <a class="btn btn-sm btn-outline-primary me-1" href="{% url 'tasks:task_detail' task.pk %}" title="View"><i class="bi bi-eye"></i></a>
+                  <a class="btn btn-sm btn-outline-secondary me-1" href="{% url 'tasks:task_edit' task.pk %}" title="Edit"><i class="bi bi-pencil"></i></a>
+                  <a class="btn btn-sm btn-outline-danger" href="{% url 'tasks:task_delete' task.pk %}" title="Delete"><i class="bi bi-trash"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="card text-center py-5 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">No to-dos yet</h5>
+        <p class="card-text text-muted">Click the button to create your first to-do and get organized.</p>
+        <a class="btn btn-primary" href="{% url 'tasks:task_create' %}"><i class="bi bi-plus-lg me-1"></i>Create To-Do</a>
+      </div>
+    </div>
+  {% endif %}
+
+{% endblock %}

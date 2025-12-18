@@ -1,0 +1,35 @@
+{% extends 'tasks/base.html' %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h4 class="card-title mb-3">{{ title }}</h4>
+          <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+              {{ form.subject.label_tag }}
+              {{ form.subject }}
+              {% if form.subject.errors %}
+                <div class="text-danger small">{{ form.subject.errors }}</div>
+              {% endif %}
+            </div>
+            <div class="mb-3">
+              {{ form.notes.label_tag }}
+              {{ form.notes }}
+              {% if form.notes.errors %}
+                <div class="text-danger small">{{ form.notes.errors }}</div>
+              {% endif %}
+            </div>
+            <div class="d-flex gap-2">
+              <button class="btn btn-success" type="submit"><i class="bi bi-save me-1"></i>Save</button>
+              <a class="btn btn-outline-secondary" href="{% url 'tasks:index' %}">Cancel</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

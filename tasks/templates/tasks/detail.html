@@ -1,0 +1,20 @@
+{% extends 'tasks/base.html' %}
+{% block title %}View To-Do{% endblock %}
+
+{% block content %}
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h4 class="card-title">{{ task.subject }}</h4>
+          <p class="card-text">{{ task.notes|linebreaks }}</p>
+          <p class="text-muted small">Created: {{ task.created_at|date:"M d, Y H:i" }}</p>
+          <div class="mt-3">
+            <a class="btn btn-primary me-2" href="{% url 'tasks:task_edit' task.pk %}"><i class="bi bi-pencil me-1"></i>Edit</a>
+            <a class="btn btn-outline-secondary" href="{% url 'tasks:index' %}">Back</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
