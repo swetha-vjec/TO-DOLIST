@@ -1,18 +1,18 @@
 /* Custom styling for the To-Do app */
 body {
   background: linear-gradient(180deg, #f6f9ff 0%, #ffffff 60%);
-  color: #222;
+  color: #b80ede;
 }
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
 
 :root{
   --bg-1: #f4f7ff; /* very light */
   --bg-2: #f9fef7; /* soft */
-  --primary-600: #3b6bff;
+  --primary-600: #ff3b5c;
   --primary-500: #5b84ff;
-  --accent: #23c58f;
+  --accent: #4b1bbd;
   --muted: #6b7280;
-  --card-edge: rgba(59,104,255,0.08);
+  --card-edge: rgba(224, 227, 236, 0.08);
 }
 html,body{height:100%;}
 body {
